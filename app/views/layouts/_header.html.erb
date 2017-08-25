@@ -1,0 +1,27 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a id='scroll' href="/">Dashboard</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <ul class="nav navbar-nav">
+          <% if current_owner.user_fees.present? %>
+            <li><a id='scroll' href="/owners/<%= current_owner.id %>/food_fees/<%=current_owner.food_fee.id %>/user_fees">Payment</a></li>
+          <% end %>
+        </ul>
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Owner<span class="caret"></span></a> 
+          <ul class="dropdown-menu">
+            <li><a href="/owners/<%= current_owner.id %>/users/new">Create User</a></li>
+            <li><a href="/owners/<%= current_owner.id %>/food_fees/new" >Create Food Fee</a></li>
+            <% if current_owner.food_fees.present? %>
+              <li><a href="/owners/<%= current_owner.id %>/food_fees" >Food Fee List</a></li>
+            <% end %>
+          </ul>
+        </li>
+        <li><a data-method="delete", href="/owners/sign_out" rel="nofollow" >Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+

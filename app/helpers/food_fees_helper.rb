@@ -1,0 +1,2 @@
+module FoodFeesHelper
+end

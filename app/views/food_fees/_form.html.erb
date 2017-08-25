@@ -1,0 +1,67 @@
+
+<div class="row centered-form">
+  <%= form_for([current_owner, @food_fee]) do |f| %>
+  <div class="col-xs-12 col-sm-8 col-md-5 col-sm-offset-3 col-md-offset-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">New Food Fee</h3>
+      </div>
+    <% if @food_fee.errors.any? %>
+      <div id="error_explanation">
+<!--         <h2>
+          <%#= pluralize(@user.errors.count, "error") %> prohibited
+          this article from being saved:
+        </h2> -->
+        <ul>
+          <% @food_fee.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>  
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-xs-6 col-sm-6 col-md-6">
+            <div class="form-group">
+             <%= f.select :timing, options_for_select([["Select One", ""], "Onetime",  "Twotime"]), :class => 'genForm_dropBox' %>
+            </div>
+          </div>
+          <div class="col-xs-6 col-sm-6 col-md-6">
+            <div class="form-group">
+               <%= f.text_field :price,  :placeholder => "enter fees/Rs", :class=> "form-control input-sm" %>
+            </div>
+          </div>
+          <div class="col-xs-6 col-sm-6 col-md-6">
+            <div class="form-group">
+              <%= f.select :status, FoodFee::FEE_STATUS %>
+            </div>
+          </div>
+          <div class="col-xs-6 col-sm-6 col-md-6">
+            <div class="form-group">
+              <%= link_to "Back", users_path, :class=> "btn btn-success" %>
+            </div>
+          </div>
+        </div>    
+      </div>
+      <%= f.submit "Genrate Food Fee", :class=> "btn btn-info btn-block" %>
+    <% end %>
+    </div>  
+  </div> 
+</div>
+
+
+
+
+<style type="text/css">
+  body{
+    background-color: gray;
+}
+.centered-form{
+  margin-top: 60px;
+}
+
+.centered-form .panel{
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
+}
+</style>        

@@ -1,0 +1,62 @@
+
+<div class="row centered-form">
+  <%= form_for [@user, @user.build_entry], url: user_entries_path(@user) do |f| %>
+  <div class="col-xs-8 col-sm-6 col-md-2 col-sm-offset-2 col-md-offset-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Create entery of <%= @user.first_name %></h3>
+      </div>
+<!--     <%# if @user.errors.any? %>
+      <div id="error_explanation">
+        <h2>
+          <%#= pluralize(@user.errors.count, "error") %> prohibited
+          this article from being saved:
+        </h2>
+        <ul>
+          <%# @user.errors.full_messages.each do |msg| %>
+            <li><%#= msg %></li>
+          <%# end %>
+        </ul>
+      </div>
+    <%# end %>  --> 
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-xs-6 col-sm-6 col-md-6">
+            <div class="form-group">
+              <%= f.select :date_time, Entry::ENTRY_TIME %>
+            </div>
+          </div>
+        </div>    
+      </div>
+      <%= f.submit "Save", :class=> "btn btn-info btn-block" %>
+    <% end %>
+    </div>  
+  </div> 
+</div>
+
+
+
+
+<style type="text/css">
+  body{
+    background-color: gray;
+}
+.centered-form{
+  margin-top: 60px;
+}
+
+.centered-form .panel{
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
+}
+</style>        
+
+
+<!-- <script type="text/javascript">
+  $(document).ready(function(){
+    $('.datepicker').datepicker({
+      dateFormat: "yyyy-mm-dd"
+    });
+  });
+</script>
+ -->

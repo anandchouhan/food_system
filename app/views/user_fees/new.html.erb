@@ -1,0 +1,32 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>User Name</th>
+      <th>Food timing</th>
+      <th>Fees</th>
+      <th>Status</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @food_fees.each_with_index do |food_fee, index| %>
+      <% current_owner.users.each do |user| %>  
+        <tr class="success">  
+          <td><%= user.first_name %> <%= user.last_name %></td>
+          <td><%= food_fee.timing %></td>
+          <td><%= food_fee.price %></td>
+          <td><%= food_fee.status %></td>
+          <% if food_fee.user_fees.pluck(:user_id).include?(user.id) %>
+        		<td><%= link_to "Created",  "javascript:void(0);"  %>
+            </td>
+          <% else %>
+            <td><%= link_to "Create fee",  owner_food_fee_user_fees_path(current_owner.id, food_fee.id, :user_id => user.id ), method: :post, :class => "btn btn-info btn-xs" if food_fee.owner_id == current_owner.id  %>
+            </td>
+          <% end %>    
+        </tr>
+      <% end %>    
+    <% end %>  
+  </tbody>
+</table>
+
+     

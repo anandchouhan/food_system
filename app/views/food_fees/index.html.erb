@@ -1,0 +1,29 @@
+<%= link_to 'Create user fee',  new_owner_food_fee_user_fee_path(current_owner, current_owner.food_fee), :class => "btn btn-warning btn-xs"  if current_owner.food_fees.present? %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Owner Name</th>
+      <th>Food timing</th>
+      <th>Food fee</th>
+      <th>Status</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @food_fees.each_with_index do |food_fee, index| %>
+        <tr class="success">  
+          <td><%= food_fee.owner.first_name %> <%= food_fee.owner.last_name %></td>
+          <td><%= food_fee.timing %></td>
+          <td><%= food_fee.price %></td>
+          <td><%= food_fee.status %></td>
+          <td><%= link_to 'Delete', owner_food_fee_path(current_owner, food_fee), method: :delete, :class => "btn btn-danger btn-xs"  %>
+              <%= link_to 'Edit', edit_owner_food_fee_path(current_owner, food_fee), :class => "btn btn-warning btn-xs"  %>
+          </td>
+        </tr>
+      <% end %>    
+  </tbody>
+</table>
+
+
+     

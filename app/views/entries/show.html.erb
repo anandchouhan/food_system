@@ -1,0 +1,17 @@
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>User name</th>
+      <th>Owner name</th>
+      <th>Time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="info">
+      <td><%=  @entry.user.first_name %> <%= @entry.user.last_name %></td> 
+      <td><%=  @user.owner.first_name %></td>
+      <td><%=  @entry.date_time %></td>
+    </tr>
+  </tbody>
+</table>

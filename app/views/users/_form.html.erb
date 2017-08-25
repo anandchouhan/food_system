@@ -1,0 +1,67 @@
+
+<div class="row centered-form">
+  <%= form_for([current_owner, @user]) do |f| %>
+  <div class="col-xs-12 col-sm-8 col-md-5 col-sm-offset-3 col-md-offset-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">User sign up</h3>
+      </div>
+    <% if @user.errors.any? %>
+      <div id="error_explanation">
+<!--         <h2>
+          <%#= pluralize(@user.errors.count, "error") %> prohibited
+          this article from being saved:
+        </h2> -->
+        <ul>
+          <% @user.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>  
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-xs-6 col-sm-6 col-md-6">
+            <div class="form-group">
+             <%= f.text_field :first_name, :placeholder=> "First Name", :class=> "form-control input-sm" %>
+            </div>
+          </div>
+          <div class="col-xs-6 col-sm-6 col-md-6">
+            <div class="form-group">
+               <%= f.text_field :last_name, :placeholder=> "Last Name", :class=> "form-control input-sm" %>
+            </div>
+          </div>
+          <div class="col-xs-6 col-sm-6 col-md-6">
+            <div class="form-group">
+              <%= f.text_field :mob_no, :placeholder=> "Enter mob no", :class=> "form-control input-sm" %>
+            </div>
+          </div>
+          <div class="col-xs-6 col-sm-6 col-md-6">
+            <div class="form-group">
+              <%= f.file_field :avatar, :multiple => true %>
+            </div>
+          </div>
+        </div>    
+      </div>
+      <%= f.submit "Submit Details", :class=> "btn btn-info btn-block" %>
+    <% end %>
+    </div>  
+  </div> 
+</div>
+
+
+
+
+<style type="text/css">
+  body{
+    background-color: gray;
+}
+.centered-form{
+  margin-top: 60px;
+}
+
+.centered-form .panel{
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
+}
+</style>        
